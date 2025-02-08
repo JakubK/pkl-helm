@@ -1,4 +1,4 @@
-﻿class Dependency {
+class Dependency {
   name: String
   version: String
   repository: String?

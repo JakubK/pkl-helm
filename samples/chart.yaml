@@ -1,0 +1,7 @@
+apiVersion: 1.0.0
+name: test
+version: test2
+annotations:
+- asdad
+- asdasd
+- asdasd

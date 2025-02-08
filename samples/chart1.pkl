@@ -1,6 +1,9 @@
-﻿import "@helm/helm.pkl"
+import "@helm/helm.pkl"
 
 x = new helm.Chart {
+  apiVersion = "1.0.0"
+  name = "test"
+  version = "test2"
   annotations {
     "asdad"
     "asdasd"
@@ -8,4 +11,11 @@ x = new helm.Chart {
   }
 }
 
-
+output {
+  files {
+    ["chart.yaml"] {
+      value = x
+      renderer = new YamlRenderer {}
+    }
+  }
+}
