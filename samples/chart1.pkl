@@ -1,14 +1,54 @@
 import "@helm/helm.pkl"
 
 x = new helm.Chart {
-  apiVersion = "1.0.0"
-  name = "test"
-  version = "test2"
-  annotations {
-    "asdad"
-    "asdasd"
-    "asdasd"
+  apiVersion = "v2"
+  name = "my-application"
+  version = "1.0.0"
+  kubeVersion = ">=1.19.0"
+  type = "application"
+  appVersion = "1.2.3"
+  description = "Description placeholder"
+
+  dependencies {
+    new helm.Dependency {
+      name = "my-dependency"
+      version = "1.2.3"
+      repository = "https://example.com/charts"
+      condition = "my-dependency.enabled"
+      tags {
+        "database"
+      }
+      alias = "dependency-alias"
+    }
   }
+
+  sources {
+    "https://github.com/example"
+  }
+
+  keywords {
+    "web"
+    "backend"
+    "api"
+  }
+
+  maintainers {
+    new helm.Maintainer {
+      name = "John Doe"
+      email = "john.doe@example.com"
+      url = "https://example.com"
+    }
+  }
+  
+  annotations {
+    ["category"] = "Web Applications"
+    ["licence"] = "MIT"
+  }
+  
+  icon = "https://example.com/icon.png"
+  deprecated = true
+  home = "https://example.com"
+  
 }
 
 output {

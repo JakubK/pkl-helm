@@ -1,7 +1,31 @@
-apiVersion: 1.0.0
-name: test
-version: test2
+apiVersion: v2
+name: my-application
+version: 1.0.0
+kubeVersion: '>=1.19.0'
+description: Description placeholder
+type: application
+keywords:
+- web
+- backend
+- api
+home: https://example.com
+sources:
+- https://github.com/example
+maintainers:
+- name: John Doe
+  email: john.doe@example.com
+  url: https://example.com
+dependencies:
+- name: my-dependency
+  version: 1.2.3
+  repository: https://example.com/charts
+  condition: my-dependency.enabled
+  tags:
+  - database
+  alias: dependency-alias
+icon: https://example.com/icon.png
+appVersion: 1.2.3
+deprecated: true
 annotations:
-- asdad
-- asdasd
-- asdasd
+  category: Web Applications
+  licence: MIT

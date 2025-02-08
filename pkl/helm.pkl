@@ -1,35 +1,40 @@
 class Dependency {
   name: String
   version: String
-  repository: String?
+  repository: Uri?
   condition: String?
-  tags: List<String>?
-  `import-values`: List<String>?
+  tags: Listing<String>?
   alias: String?
 }
 
 class Maintainer {
   name: String
-  email: String?
-  url: String?
+  email: EmailAddress?
+  url: Uri?
 }
 
+typealias ChartType = "application" | "library"
+typealias EmailAddress = String(matches(Regex(#".+@.+"#)))
+typealias ChartApiVersion = "v1" | "v2"
+typealias Semver2 = String(matches(Regex(#"^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9A-Za-z-][0-9A-Za-z-]*)(?:\.(?:0|[1-9A-Za-z-][0-9A-Za-z-]*))*))?(?:\+([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?$"#)))
+typealias Semver2Range = String(matches(Regex(#"^(?:\s*(?:>=|<=|>|<|~|\^)?\s*(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9A-Za-z-][0-9A-Za-z-]*)(?:\.(?:0|[1-9A-Za-z-][0-9A-Za-z-]*))*))?(?:\+([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?\s*)(?:\s*\|\|\s*(?:>=|<=|>|<|~|\^)?\s*(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9A-Za-z-][0-9A-Za-z-]*)(?:\.(?:0|[1-9A-Za-z-][0-9A-Za-z-]*))*))?(?:\+([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?\s*)*$"#)))
+
 class Chart {
-  apiVersion: String
+  apiVersion: ChartApiVersion
   name: String
-  version: String
-  kubeVersion: String?
+  version: Semver2
+  kubeVersion: Semver2Range?
   description: String?
-  type: String?
+  type: ChartType?
   keywords: Listing<String>?
   home: String?
   sources: Listing<String>?
 
-  maintainers: List<Maintainer>?
-  dependencies: List<Dependency>?
+  maintainers: Listing<Maintainer>?
+  dependencies: Listing<Dependency>?
 
-  icon: String?
+  icon: Uri?
   appVersion: String?
   deprecated: Boolean?
-  annotations: Listing<String>?
+  annotations: Mapping<String, String>?
 }
