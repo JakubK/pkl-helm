@@ -1,0 +1,11 @@
+﻿import "@helm/helm.pkl"
+
+x = new helm.Chart {
+  annotations {
+    "asdad"
+    "asdasd"
+    "asdasd"
+  }
+}
+
+

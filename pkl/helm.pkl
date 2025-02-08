@@ -1,0 +1,35 @@
+﻿class Dependency {
+  name: String
+  version: String
+  repository: String?
+  condition: String?
+  tags: List<String>?
+  `import-values`: List<String>?
+  alias: String?
+}
+
+class Maintainer {
+  name: String
+  email: String?
+  url: String?
+}
+
+class Chart {
+  apiVersion: String
+  name: String
+  version: String
+  kubeVersion: String?
+  description: String?
+  type: String?
+  keywords: Listing<String>?
+  home: String?
+  sources: Listing<String>?
+
+  maintainers: List<Maintainer>?
+  dependencies: List<Dependency>?
+
+  icon: String?
+  appVersion: String?
+  deprecated: Boolean?
+  annotations: Listing<String>?
+}
