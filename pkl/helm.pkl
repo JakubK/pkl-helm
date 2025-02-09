@@ -5,6 +5,7 @@ class Dependency {
   condition: String?
   tags: Listing<String>?
   alias: String?
+  `import-values`: ImportValues?
 }
 
 class Maintainer {
@@ -13,6 +14,13 @@ class Maintainer {
   url: Uri?
 }
 
+
+class ImportValueObject {
+  parent: String
+  child: String
+}
+
+typealias ImportValues = Listing<ImportValueObject | String>
 typealias ChartType = "application" | "library"
 typealias EmailAddress = String(matches(Regex(#".+@.+"#)))
 typealias ChartApiVersion = "v1" | "v2"

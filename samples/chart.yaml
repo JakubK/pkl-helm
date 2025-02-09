@@ -23,6 +23,18 @@ dependencies:
   tags:
   - database
   alias: dependency-alias
+  import-values:
+  - data
+- name: second-dependency
+  version: 1.0.0
+  repository: https://example.com/chart2
+  condition: my-dependency.enabled
+  tags:
+  - database
+  alias: some-alias
+  import-values:
+  - parent: myimports
+    child: default.data
 icon: https://example.com/icon.png
 appVersion: 1.2.3
 deprecated: true

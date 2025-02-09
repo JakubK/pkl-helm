@@ -19,6 +19,27 @@ x = new helm.Chart {
         "database"
       }
       alias = "dependency-alias"
+      `import-values` {
+        "data"
+      }
+    }
+
+
+    new helm.Dependency {
+      name = "second-dependency"
+      version = "1.0.0"
+      repository = "https://example.com/chart2"
+      condition = "my-dependency.enabled"
+      tags {
+        "database"
+      }
+      alias = "some-alias"
+      `import-values` {
+        new helm.ImportValueObject {
+          parent = "myimports"
+          child = "default.data"
+        }
+      }
     }
   }
 
