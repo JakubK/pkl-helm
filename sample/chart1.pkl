@@ -24,7 +24,6 @@ x = new helm.Chart {
       }
     }
 
-
     new helm.Dependency {
       name = "second-dependency"
       version = "1.0.0"
@@ -69,7 +68,6 @@ x = new helm.Chart {
   icon = "https://example.com/icon.png"
   deprecated = true
   home = "https://example.com"
-  
 }
 
 output {
